@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+</head>
+
+<style>
+    /* For all of these properties, SEE WHAT HAPPENS when you take them away and you'll know what they do */
+    * {
+        margin: 0; /* Take away all the preset margin and padding HTML already has */
+        padding: 0;
+        font-size: 25px;
+    }
+    body {
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    ::selection {
+        background-color:rgba(45, 158, 192,0.2); /* This will change the highlight color when you select the text */
+    }
+    a {
+        color: rgb(45, 158, 192);
+        font: inherit; /* inherit the text properties from parent elements */
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        text-decoration: none;
+        transition: .25s;
+    }
+    a:hover {
+        color: rgb(137, 208, 230);
+    }
+    
+
+    /* NAVIGATION */
+    .nav-bar { 
+        box-sizing: border-box; /* very important! */
+        width: 100%;
+        padding: 20px 30px;
+
+        display: flex; /* These lines push "COMPANY" and "Home ..." to opposite side of the page */
+        align-items: center;
+        justify-content: space-between;
+        
+        position: fixed; /*These next lines make our navigation bar fixed on the page */
+        top: 0;
+        left: 0;
+        z-index: 1; /* make sure it's placed on top of everything else */
+
+        background-color: rgb(45, 158, 192);
+        color: white;
+        
+       
+    }
+    .nav-bar * { /* gives all elements UNDERNEATH the .nav-bar class this display */
+        display: inline-block; /* makes list elements side by side */
+    }
+    #logo {
+        font-size: 2.3em;
+        margin-left: 15px;
+    }
+    
+    .nav-menu li {
+        padding: 10px 20px 10px 20px;
+        cursor: pointer; /* changes the cursor for the default to the clicking cursor when we hover over these elements */
+                         /* You can make the cursor whatever you want! There's many types of the cursor */
+        border-radius: 10px; /* rounds the corners of our box */
+        font-size: 1.1em;
+        transition: .25s; /* This makes our links change color more slowly */
+    }
+    .nav-menu li:hover {
+        background-color:rgb(70, 174, 206); /* When we hover, make the background-color darker */
+    }
+    
+
+    /* MAIN BODY */
+    .main-content {
+        width: 80%;
+        margin: 180px auto 50px auto; /* margin: (top) (right) (bottom) (left) */
+                                      /* or the shorthand -> margin: (top-bottom) (left-right); ex. margin: 30px 50px; */
+                                      /* or the shorter hand -> margin: (all); ex. margin: 50px; */
+    }
+    h1 {
+        font-size: 40px;
+        padding: 10px;
+        border-bottom: 3px solid rgba(45, 158, 192,0.5); /* border: (width) (border-style) (color); */
+    }
+    .main-content p {
+        margin: 50px; 
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .section img {
+        width: 47.5%;
+    }
+    .main-content > ul {
+        margin: 50px 100px;
+    }
+    .main-content > ul li {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .main-content > ul li::marker {
+        color:rgb(45, 158, 192); /* change the color of the bullet points */
+    }
+    .main-content > ul ul {
+        margin: 10px 50px 20px 50px;
+        font-size: 50px;
+    }
+
+    /* TABLE */
+    table {
+        background-color:rgba(67,67,67,.2);
+        font-family: monospace;
+        margin: 0 auto 100px auto;
+    }
+    td {
+        padding: 20px;
+    }
+    tr td:first-child { /* format for the first column in the table */
+        background-color: white; 
+        text-align: center;
+    }
+    tr td:last-child { /* format for the second-column */
+        background-color: rgb(67,67,67);
+        color: rgb(207,207,207);
+    }
+    .selected {
+        color: rgb(45, 158, 192);
+    }
+    
+
+    /* QUOTE */
+    #pull-quote {
+        padding: 50px 0;
+        font-size: 40px;
+        border-radius: 15px;
+        width: 80%;
+        font-weight: bold;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        margin: 0 auto;
+        text-align: center;
+        cursor: default;
+    }
+    .fancy-border { 
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+    }
+    .quote-container {
+        position: relative; /* makes it so that I can move elements wherever I want inside this box, like the corner borders */
+        width: 50%; /* 50% of my .main-content box */
+        max-width: 600px;
+        margin: 75px auto;
+    }
+    .fancy-border:first-child { /* make the top corner border, really just a box */
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-top: 5px solid black;
+        border-left: 5px solid black;
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid transparent;
+        transition: .2s;
+    }
+    .fancy-border:last-child { /* bottom corner border */
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-top: 5px solid transparent;
+        border-left: 5px solid transparent;;
+        border-bottom: 5px solid black;
+        border-right: 5px solid black;
+        transition: .2s;
+    }
+
+    /* Section with the graph */
+    .section {
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0px 0 100px 0;
+    }
+    .section > p { /* This is our description to the right of our graph */
+        flex-grow: 1;
+        margin: 0 0 50px 100px;
+        align-self: flex-start;
+    }
+
+    /* GRAPH */
+    .graph-container {
+        min-width: 425px;
+        height: 425px;
+        padding: 0 50px 0 50px;
+        display: flex; /* use flex to center our graph in the middle of the container */
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 5px;
+        box-shadow: 0 2px 15px rgba(0,0,0,.2);
+        background-color: rgb(250, 250, 250);
+        box-sizing: border-box;
+    }
+    .graph-container p {
+        margin: 20px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    }
+    .bar-container {
+        width: 100%;
+        height: 100%;
+        border-bottom: 3px solid rgba(0,0,0,.15);
+        display: flex;
+        align-items: flex-end; /* put the bars at the bottom of the graph */
+        justify-content: space-around; /* space the bars evenly horizontally */
+    }
+    .bar {
+        width: 50px;
+        height: 50%;
+    }
+    .graph-container button {
+        margin: 25px 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: transparent;
+        color: rgb(45, 158, 192);
+        font: inherit;
+        font-weight: 400;
+        border: 2px solid rgb(45, 158, 192);
+        cursor: pointer;
+        transition: .25s;
+
+    }
+    .graph-container button:hover {
+        background-color: rgb(45, 158, 192);
+        color: white;
+    }
+</style>
+
+<body>
+    <div class="nav-bar">
+        <p id="logo">CSS</p>
+        <ul class="nav-menu">
+            <li>Home</li>
+            <li>Info</li>
+            <li>About</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1>Workflow</h1>
+        <p>
+            When creating a webpage, it is super important that you know the purpose of your webpage. What are you
+            trying to accomplish? What do you want the user to do or see? Take a look at Amazon's webpage. Their 
+            main goal is to sell products. So, on their homepage, they fill it with products relevant to you
+            and other promotions. <br><br>
+            Now look at the google homepage. What does google want you to do? They want you to search of course. 
+            So, all their homepage has is a search bar with other small links.
+        </p>
+
+        <div class="section">
+            <img src="https://cdn.vox-cdn.com/thumbor/46aXsGGkRgC4zT9zL5_E5s4FGEU=/0x0:1010x673/1200x800/filters:focal(0x0:1010x673)/cdn.vox-cdn.com/uploads/chorus_image/image/45176182/Screen_Shot_2015-01-07_at_11.05.22_PM.0.0.png">
+            <img src="https://s3.amazonaws.com/images.seroundtable.com/google-home-page-white-1465304286.png">
+        </div>
+
+        <p>
+            It is a really good idea to design your page before putting it into code. This will facilitate and speed up your workflow
+            exponentially. You can do this by drawing out your page on paper or on a device and plan what you will have where.
+        </p>   
+
+        <div class="quote-container">
+            <span class="fancy-border"></span>
+            <p id="pull-quote">"Design your page before putting it into code"</p>
+            <span class="fancy-border"></span>
+        </div>  
+
+        <h1>CSS Selectors</h1>
+        <p>
+            Here are just a few of the many css selectors you can use to help style your webpage elements. You
+            can look at a more full list <a target="_blank" href="https://www.w3schools.com/cssref/css_selectors.asp">here</a>.
+        </p>
+        <table>
+            <tr>
+                <td>.class</td>
+                <td>
+                    <span class="selected">&#60<i>element</i> class="class"&#62&#60/<i>element</i>&#62</span></td>
+            </tr>
+            <tr>
+                <td>#id</td>
+                <td>
+                    <span class="selected">&#60<i>element</i> id="id"&#62&#60/<i>element</i>&#62</span>
+                </td>
+            </tr>
+            <tr>
+                <td>p.class</td>
+                <td>
+                    <span class="selected">&#60p class="class"&#62&#60/p&#62</span>
+                </td>
+            </tr>
+            <tr>
+                <td>p .class</td>
+                <td>
+                    &#60p&#62<br>
+                    <span class="selected">&emsp;&#60a class="class"&#62&#60a&#62</span><br>
+                    &#60p&#62
+                </td>
+            </tr>
+            <tr>
+                <td>p.first.second</td>
+                <td>
+                    &#60p class="first"&#62&#60/p&#62<br>
+                    &#60p class="second"&#62&#60/p&#62<br>
+                    <span class="selected">&#60p class="first second"&#62&#60/p&#62</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    *<br>
+                    (select all)
+                </td>
+                <td>
+                    <span class="selected">
+                        &#60body&#62<br>
+                        &emsp;&#60header&#62&#60/header&#62<br>
+                        &emsp;&#60p&#62&#60/p&#62<br>
+                        &emsp;&#60ul&#62<br>
+                        &emsp;&emsp;&#60li&#62&#60/li&#62<br>
+                        &emsp;&emsp;...
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    .main &#62 *<br>
+                    (direct child)
+                </td>
+                <td>
+                    &#60div class="main"&#62<br>
+                    <span class="selected">&emsp;&#60p&#62...&#60/p&#62<br>
+                    &emsp;&#60div class="sub"&#62<br></span>
+                    &emsp;&emsp;&#60p&#62...&#60/p&#62<br>
+                    &emsp;&emsp;&#60p&#62...&#60/p&#62<br>
+                    <span class="selected">&emsp;&#60/div&#62<br>
+                    &emsp;&#60p&#62...&#60/p&#62<br></span>
+                    &#60/div&#62<br>
+                </td>
+            </tr>
+            <tr>
+                <td>Other selectors</td>
+                <td>  
+                    <span class="selected"><i>element</i>:first-child</span> {...}</br>
+                    <span class="selected"><i>element</i>:last-child</span> {...}</br>
+                    <span class="selected"><i>element</i>:hover</span> {...}</br>
+                    <span class="selected"><i>element</i>:focus</span> {...}</br>
+                    <span class="selected"><i>element</i>:checked</span> {...}</br>
+                </td>
+            </tr>
+        </table>    
+
+        <h1>Flexbox and Centering</h1>
+        <p>In CSS, centering is a headache! But luckily, there's some small tricks such as flexbox 
+            that can help us. Flexbox is super handy for having a flex-ible webpage. It is also useful for laying out elements
+            horizontally or vertically using the flex-direction property. The graph and paragraph next to each other below
+            are inside a &#60div&#62 box and I said "flex-direction: row;" to position them next to each other inside the box.
+        </p>
+
+        <div class="section">
+            <div class="graph-container">
+                <p>Our Data</p>
+                <div class="bar-container">
+                    <div class="bar" style="background-color: rgb(245, 126, 126)"></div>
+                    <div class="bar" style="background-color: rgb(75, 192, 147)"></div>
+                    <div class="bar" style="background-color: rgb(222, 229, 151)"></div>
+                    <div class="bar" style="background-color: rgb(109, 192, 212)"></div>
+                </div>
+                <button type="button" onclick="updateData()">Update</button>
+            </div>
+            <div>
+                <p>To the left, you can see what's possible when you use flexbox. In this graph, I made several columns
+                    with a fixed width, and the height is generated using some javascript and random numbers. This is 
+                    a dummy example, but maybe you could see how this could be used with real data and implemented using
+                    the DOM. <br><br>
+                    To learn and practice flexbox properties, look at <a target="_blank" href="https://flexboxfroggy.com">Flexbox Froggy</a>.</p>
+            </div>
+        </div>
+
+        <h1>Other Topics We Covered</h1>
+        <ul>
+            <li><a target="_blank" href="https://www.w3schools.com/cssref/css_units.asp">Units of scale</a>
+                <ul>
+                    <li>px - pixels</li>
+                    <li>vh - viewport height. The max number is 100vh</li>
+                    <li>vw - viewport width. The max number is 100vw</li>
+                    <li>% - percentage of the width of the container that your element is in</li>
+                </ul>
+            </li>
+            <li><a target="_blank" href="https://www.w3schools.com/css/css_boxmodel.asp">The Box Model</a></li>
+            <li><a target="_blank" href="https://www.w3schools.com/css/css_grid.asp">Grid Layout</a> (similar to flexbox)</li>
+        </ul>
+    </div>
+
+    <script>
+        function updateData() {
+            var bars = document.getElementsByClassName("bar"); // When we get elements by class, it returns an array of all the elements that have that class, so we have to use a for loop to iterate through it
+            for (let i = 0; i < bars.length; i++) {
+                bars[i].style.height = Math.random() * 100 + "%";
+            }
+        }
+    </script>
+</body>
+</html>
